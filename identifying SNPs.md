@@ -154,7 +154,7 @@ foreach(@synapomorphies){
 	# compare to altai mtDNA
 	print OUTFILE "Altai mtDNA queries \n";
 	for ($n=$_-$kmer+1; $n < $_+$kmer; $n++){
-		$newneander_data=$newneander_data.$datahash{$keyarray[22]}[$n];
+		$newneander_data=$newneander_data.$datahash{$keyarray[21]}[$n];
 	}
 	print OUTFILE "$newneander_data\n\n";
 	$commandline="qsub -l h_vmem=64g -cwd -b y bash -c \"";
