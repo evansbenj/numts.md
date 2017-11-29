@@ -1,3 +1,9 @@
+$ Make kmer library
+
+```
+cookiecutter make_library -i numt848.fa -o numt848.txt -l 29
+```
+
 # Getting reads
 
 ```
