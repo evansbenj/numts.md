@@ -1,3 +1,7 @@
+# Convert to fastq from weird format
+```
+perl ./converts_weird_fasta_to_fastq.pl /mnt/scratch/Manju/assembly/denisovan/raw_files/FR_raw.fasta > deni_FR_raw_fakequality.fastq
+```
 # Make kmer library
 
 ```
