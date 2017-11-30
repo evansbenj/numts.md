@@ -2,6 +2,11 @@
 ```
 perl ./converts_weird_fasta_to_fastq.pl /mnt/scratch/Manju/assembly/denisovan/raw_files/FR_raw.fasta > deni_FR_raw_fakequality.fastq
 ```
+# Sample every two out of four lines
+```
+awk 'NR%4<2{print $0}' file 
+```
+
 # Make kmer library
 
 ```
