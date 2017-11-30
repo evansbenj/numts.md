@@ -27,3 +27,9 @@ cookiecutter extract -i /mnt/scratch/Manju/assembly/altai_denovo/raw_fastq_files
 ```
 cookiecutter extract -i /mnt/scratch/Manju/assembly/altai_denovo/raw_fastq_files/S_all_raw.fasta -f kmers_for_1413_1450_sima_deni_mtDNA_in_Altai_noendogenousmtDNA.txt -o kmers_for_1413_1450_sima_deni_mtDNA_in_Altai_noendogenousmtDNA.reads.fa
 ```
+
+# Assemble reads
+
+```
+/mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fa --single temp.fa --no_normalize_reads --max_memory 10G 
+```
