@@ -4,7 +4,7 @@ perl ./converts_weird_fasta_to_fastq.pl /mnt/scratch/Manju/assembly/denisovan/ra
 ```
 # Sample every two out of four lines
 ```
-awk 'NR%4<2{print $0}' file 
+awk 'NR%4>2{print $0}' file 
 ```
 
 # Make kmer library
