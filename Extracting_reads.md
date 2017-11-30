@@ -31,5 +31,5 @@ cookiecutter extract -i /mnt/scratch/Manju/assembly/altai_denovo/raw_fastq_files
 # Assemble reads
 
 ```
-/mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fa --single temp.fa --no_normalize_reads --max_memory 10G 
+/mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fa --single temp.fa --no_normalize_reads --max_memory 10G --KMER_SIZE 29
 ```
