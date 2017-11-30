@@ -21,7 +21,7 @@ cookiecutter make_library -i numt848.fa -o numt848.txt -l 29
 # Getting reads
 
 ```
-cookiecutter extract -i /mnt/scratch/Manju/assembly/altai_denovo/raw_fastq_files/S_all_raw.fasta -f numt848.txt -o numt848_reads.fa 
+cookiecutter extract -i altai_S_all_raw_fakequality.fastq -f numt848.txt -o numt848_reads 
 ```
 
 ```
