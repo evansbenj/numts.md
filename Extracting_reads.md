@@ -6,6 +6,11 @@ perl ./converts_weird_fasta_to_fastq.pl /mnt/scratch/Manju/assembly/denisovan/ra
 ```
 awk 'NR%4==1 || NR%4==2' test.nmea > new.file
 ```
+# Replace @ with >
+
+```
+sed -i -e 's/@/>/g' hello.txt
+```
 
 # Make kmer library
 
