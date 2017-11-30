@@ -4,7 +4,7 @@ perl ./converts_weird_fasta_to_fastq.pl /mnt/scratch/Manju/assembly/denisovan/ra
 ```
 # Sample every two out of four lines
 ```
-awk 'NR%3!=0 && NR%4!=0' test.nmea >new.file
+awk 'NR%4==1 || NR%4==2' test.nmea > new.file
 ```
 
 # Make kmer library
