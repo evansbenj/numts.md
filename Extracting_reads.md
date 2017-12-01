@@ -31,5 +31,19 @@ cookiecutter extract -i /mnt/scratch/Manju/assembly/altai_denovo/raw_fastq_files
 # Assemble reads
 
 ```
-/mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fa --single temp.fa --no_normalize_reads --max_memory 10G --KMER_SIZE 29
+/mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fa --single altai_S_all_raw_fakequality.filtered.fastq, --no_normalize_reads --max_memory 10G --KMER_SIZE 29
 ```
+
+for paired reads in one file (should figure out how to separate these to tun in tandem)
+
+```
+/mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fa --single altai_FR_all_raw_fakequality.filtered.fastq --run_as_paired --no_normalize_reads --max_memory 10G --KMER_SIZE 29
+```
+
+for singleend reads in one file 
+
+```
+/mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fa --single altai_S_all_raw_fakequality.filtered.fastq --run_as_paired --no_normalize_reads --max_memory 10G --KMER_SIZE 29
+```
+
+
