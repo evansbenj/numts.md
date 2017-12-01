@@ -30,6 +30,11 @@ cookiecutter extract -i /mnt/scratch/Manju/assembly/altai_denovo/raw_fastq_files
 
 # Assemble reads
 
+I had to fix the reads like this (for single end)
+```
+sed -i '/@/ s_$_/1_' temp.fastq
+```
+
 ```
 /mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fa --single altai_S_all_raw_fakequality.filtered.fastq, --no_normalize_reads --max_memory 10G --KMER_SIZE 29
 ```
