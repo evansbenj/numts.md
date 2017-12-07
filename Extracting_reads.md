@@ -68,16 +68,17 @@ my @headers;
 my @temp;
 
 while ( my $line = <DATAINPUT>) {
-	@temp=split(':',$line);
+	chomp($line);
+	@temp=split(':@',$line);
 	push (@headers, $temp[1]);
 }		
 close DATAINPUT;
 
 
 foreach my $header (@headers){
-	$commandline = "grep -A 2 \'".$header."\' /mnt/scratch/Manju/assembly/altai_denovo/raw_fastq_files/FR_all.fasta >> ".$outputfile."\n";
+	$commandline = "grep -A 2 \'@".$header."\' /mnt/scratch/Manju/assembly/altai_denovo/raw_fastq_files/FR_all.fasta >> ".$outputfile;
 	print $commandline,"\n";
-	$status = system($commandline);
+	#$status = system($commandline);
 }
 
 ```
