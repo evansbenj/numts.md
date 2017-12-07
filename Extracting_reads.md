@@ -28,6 +28,60 @@ cookiecutter extract -i ../../altai_S_all_raw_fakequality.fastq -f numt848.txt -
 cookiecutter extract -i /mnt/scratch/Manju/assembly/altai_denovo/raw_fastq_files/S_all_raw.fasta -f kmers_for_1413_1450_sima_deni_mtDNA_in_Altai_noendogenousmtDNA.txt -o kmers_for_1413_1450_sima_deni_mtDNA_in_Altai_noendogenousmtDNA.reads.fa
 ```
 
+# Get paired ends
+
+So I got the first read from cookie cutter, but ideally we need both reads for paired end reads that were not merged.  I did this using grep plus a script that also greps.  First, get the header of the reads: `grep '@' numt*/numt*FR/*filtered.fastq`
+
+Then use this script to get both reads (`./Gets_paired_seqs_from_cookiecutter_kmers.pl paired_headers_from_cookiecutter paired_reads_allnumts.out`)
+
+```
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+
+# This program reads in headers from one of the paired end reads that were pulled using 
+# kmers and cookiecutter.  These headers can be obtained like this:
+# grep '@' numt*/numt*FR/*filtered.fastq
+
+# The program will read in these reads and then grep the original fastafile and make two new
+# files that have each pair
+
+my $inputfile = $ARGV[0];
+my $outputfile = $ARGV[1];
+my $status;
+my $commandline;
+
+unless (open DATAINPUT, $inputfile) {
+	print "Can not find the input file.\n";
+	exit;
+}
+
+unless (open(OUTFILE, ">$outputfile"))  {
+	print "I can\'t write to $outputfile\n";
+	exit;
+}
+print "Creating output file: $outputfile\n";
+
+
+my @headers;
+my @temp;
+
+while ( my $line = <DATAINPUT>) {
+	@temp=split(':',$line);
+	push (@headers, $temp[1]);
+}		
+close DATAINPUT;
+
+
+foreach my $header (@headers){
+	$commandline = "grep -A 2 \'".$header."\' /mnt/scratch/Manju/assembly/altai_denovo/raw_fastq_files/FR_all.fasta >> ".$outputfile."\n";
+	print $commandline,"\n";
+	$status = system($commandline);
+}
+
+```
+
 # Assemble reads
 
 I had to fix the reads like this (for single end)
