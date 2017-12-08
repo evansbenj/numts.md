@@ -76,7 +76,7 @@ close DATAINPUT;
 
 
 foreach my $header (@headers){
-	$commandline = "grep -A 2 \'@".$header."\' /mnt/scratch/Manju/assembly/altai_denovo/raw_fastq_files/FR_all.fasta >> ".$outputfile;
+	$commandline = "grep -A 1 \'@".$header."\' /mnt/scratch/Manju/assembly/altai_denovo/raw_fastq_files/FR_all.fasta >> ".$outputfile;
 	print $commandline,"\n";
 	#$status = system($commandline);
 }
