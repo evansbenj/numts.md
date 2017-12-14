@@ -117,3 +117,12 @@ for singleend reads in one file
 ```
 
 
+# Working with Vindija genome
+
+Data are split up into many fastq files.
+
+Search for kmers:
+```
+
+```
+
