@@ -118,7 +118,7 @@ for singleend reads in one file
 ```
 
 
-# Working with Vindija genome
+# V genome
 
 Data are split up into many fastq files.
 
