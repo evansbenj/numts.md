@@ -1,24 +1,25 @@
-# Convert to fastq from weird format
+# A genome
+## Convert to fastq from weird format
 ```
 perl ./converts_weird_fasta_to_fastq.pl /mnt/scratch/Manju/assembly/denisovan/raw_files/FR_raw.fasta > deni_FR_raw_fakequality.fastq
 ```
-# Sample every two out of four lines
+## Sample every two out of four lines
 ```
 awk 'NR%4==1 || NR%4==2' test.nmea > new.file
 ```
-# Replace @ with >
+## Replace @ with >
 
 ```
 sed -i -e 's/@/>/g' hello.txt
 ```
 
-# Make kmer library
+## Make kmer library
 
 ```
 cookiecutter make_library -i numt848.fa -o numt848.txt -l 29
 ```
 
-# Getting reads
+# Getting reads A genome
 
 ```
 cookiecutter extract -i ../../altai_S_all_raw_fakequality.fastq -f numt848.txt -o numt848_reads 
@@ -28,7 +29,7 @@ cookiecutter extract -i ../../altai_S_all_raw_fakequality.fastq -f numt848.txt -
 cookiecutter extract -i /mnt/scratch/Manju/assembly/altai_denovo/raw_fastq_files/S_all_raw.fasta -f kmers_for_1413_1450_sima_deni_mtDNA_in_Altai_noendogenousmtDNA.txt -o kmers_for_1413_1450_sima_deni_mtDNA_in_Altai_noendogenousmtDNA.reads.fa
 ```
 
-# Get paired ends
+# Get paired ends A genome
 
 So I got the first read from cookie cutter, but ideally we need both reads for paired end reads that were not merged.  I did this using grep plus a script that also greps.  First, get the header of the reads: `grep '@' numt*/numt*FR/*filtered.fastq`
 
