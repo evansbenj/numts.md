@@ -158,31 +158,17 @@ Concatenated paired
 
 # Assemble reads
 
-I had to fix the reads like this (for single end)
-```
-sed -i '/@/ s_$_/1_' temp.fastq
-```
+I added the merged forward reads to the left list after the forward paired with a comma separating them.
 
 ```
-/mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fq --single temp.fastq --no_normalize_reads --max_memory 10G --KMER_SIZE 29
+/mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fa --left Sima_and_SimaDeni_paired_forward_cat.fasta,Sima_and_SimaDeni_forwardmerged_cat.fasta --right Sima_and_SimaDeni_paired_reverse_cat.fasta --no_normalize_reads --max_memory 10G --KMER_SIZE 29
 ```
 
-for paired reads in one file (should figure out how to separate these to tun in tandem)
-
-```
-/mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fq --single altai_FR_all_raw_fakequality.filtered.fastq --run_as_paired --no_normalize_reads --max_memory 10G --KMER_SIZE 29
-```
-
-for singleend reads in one file 
-
-```
-/mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fq --single altai_S_all_raw_fakequality.filtered.fastq --run_as_paired --no_normalize_reads --max_memory 10G --KMER_SIZE 29
-```
 
 
 # V genome
 
-Data are split up into many fastq files.
+Data are split up into many fastq files and there are no paired reads.  
 
 Search for kmers:
 ```
