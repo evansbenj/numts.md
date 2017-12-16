@@ -159,16 +159,21 @@ Concatenated paired
 # Assemble reads
 
 I added the merged forward reads to the left list after the forward paired with a comma separating them.
-
 ```
 /mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fa --left Sima_and_SimaDeni_paired_forward_cat.fasta,Sima_and_SimaDeni_forwardmerged_cat.fasta --right Sima_and_SimaDeni_paired_reverse_cat.fasta --no_normalize_reads --max_memory 10G --KMER_SIZE 29
 ```
 
+Or added the merged forward reads to the right list after the forward paired with a comma separating them.
+```
+/mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fa --left Sima_and_SimaDeni_paired_forward_cat.fasta --right Sima_and_SimaDeni_paired_reverse_cat.fasta,Sima_and_SimaDeni_forwardmerged_cat.fasta --no_normalize_reads --max_memory 10G --KMER_SIZE 29
+```
 
+Or combined all reads as single
 ```
 /mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fa --single allreads.fasta --no_normalize_reads --max_memory 10G --KMER_SIZE 29
 ```
 
+The most contigs were from the first option.
 
 
 # V genome
