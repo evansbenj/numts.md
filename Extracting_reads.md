@@ -88,30 +88,39 @@ foreach my $header (@headers){
 ```
 awk 'NR%7==1 || NR%7==2 || NR%7==5 || NR%7==6' paired_reads_allnumts.out > new.file
 ```
-# Make fasta file out of forward reads
+# Make fasta file out of forward reads and add /1 at end
 
 ```
 awk 'NR%4==1 || NR%4==2' allS.fastq > allS.fasta
 ```
 ```
+sed -i -e 's/@/>/g' allS.fasta
+```
+```
 sed -i '/@/ s_$_/1_' allS.fasta
 ```
 
-# Replace @ with >
-
-```
-sed -i -e 's/@/>/g' hello.txt
-```
 # Make forward reads from output of perl grep script above
 ```
 awk 'NR%4==1 || NR%4==2' paired_reads_simadeninumts.fasta > paired_reads_simadeninumts_forward.fasta
+```
+```
+sed -i -e 's/@/>/g' paired_reads_simadeninumts_forward.fasta
+```
+```
+sed -i '/>/ s_$_/1_' paired_reads_simadeninumts_forward.fasta
 ```
 
 # Make reverse reads
 ```
 awk 'NR%4==3 || NR%4==0' paired_reads_simadeninumts.fasta > paired_reads_simadeninumts_reverse.fasta
 ```
-
+```
+sed -i -e 's/@/>/g' paired_reads_simadeninumts_reverse.fasta
+```
+```
+sed -i '/@/ s_$_/2_' paired_reads_simadeninumts_reverse.fasta
+```
 # Assemble reads
 
 I had to fix the reads like this (for single end)
