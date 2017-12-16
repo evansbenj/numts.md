@@ -173,7 +173,7 @@ Or combined all reads as single
 /mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fa --single allreads.fasta --no_normalize_reads --max_memory 10G --KMER_SIZE 29
 ```
 
-The most contigs were from the first option.
+The most contigs were from the first option (41, 40, and 39) but it is not yet clear which has the longest combined contig length.
 
 
 # V genome
