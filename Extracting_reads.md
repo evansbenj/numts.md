@@ -88,6 +88,15 @@ foreach my $header (@headers){
 ```
 awk 'NR%7==1 || NR%7==2 || NR%7==5 || NR%7==6' paired_reads_allnumts.out > new.file
 ```
+# Make fasta file out of forward reads
+
+```
+awk 'NR%4==1 || NR%4==2' allS.fastq > allS.fasta
+```
+```
+sed -i '/@/ s_$_/1_' allS.fasta
+```
+
 # Replace @ with >
 
 ```
