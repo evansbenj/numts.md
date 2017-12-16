@@ -119,7 +119,7 @@ awk 'NR%4==3 || NR%4==0' paired_reads_simadeninumts.fasta > paired_reads_simaden
 sed -i -e 's/@/>/g' paired_reads_simadeninumts_reverse.fasta
 ```
 ```
-sed -i '/@/ s_$_/2_' paired_reads_simadeninumts_reverse.fasta
+sed -i '/>/ s_$_/2_' paired_reads_simadeninumts_reverse.fasta
 ```
 
 # Location of SimaDeni reads
