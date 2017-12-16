@@ -97,7 +97,7 @@ awk 'NR%4==1 || NR%4==2' allS.fastq > allS.fasta
 sed -i -e 's/@/>/g' allS.fasta
 ```
 ```
-sed -i '/@/ s_$_/1_' allS.fasta
+sed -i '/>/ s_$_/1_' allS.fasta
 ```
 
 # Make forward reads from output of perl grep script above
