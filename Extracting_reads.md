@@ -165,6 +165,11 @@ I added the merged forward reads to the left list after the forward paired with 
 ```
 
 
+```
+/mnt/expressions/ben_evans/bin/trinityrnaseq/Trinity --seqType fa --single allreads.fasta --no_normalize_reads --max_memory 10G --KMER_SIZE 29
+```
+
+
 
 # V genome
 
