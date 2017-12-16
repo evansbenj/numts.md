@@ -92,7 +92,15 @@ awk 'NR%7==1 || NR%7==2 || NR%7==5 || NR%7==6' paired_reads_allnumts.out > new.f
 ```
 sed -i -e 's/@/>/g' hello.txt
 ```
+# Make forward reads
+```
+awk 'NR%4==1 || NR%4==2' paired_reads_simadeninumts.fasta > paired_reads_simadeninumts_forward.fasta
+```
 
+# Make reverse reads
+```
+awk 'NR%4==3 || NR%4==0' paired_reads_simadeninumts.fasta > paired_reads_simadeninumts_reverse.fasta
+```
 
 # Assemble reads
 
