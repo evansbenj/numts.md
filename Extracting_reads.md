@@ -145,6 +145,17 @@ sima only paired
 /mnt/scratch/ben_evans/numts/sima_only_mtDNA_in_neanders/Sima_only_cookiecutter/simaonlypaired_reads_allnumts_reverse.fasta
 ```
 
+# Location of combined reads
+Contatenated merged_forward
+```
+/mnt/scratch/ben_evans/numts/Trinity_Assembly_Simaonly_and_SimaDeni
+```
+Concatenated paired
+```
+/mnt/scratch/ben_evans/numts/Trinity_Assembly_Simaonly_and_SimaDeni/Sima_and_SimaDeni_paired_forward_cat.fasta
+/mnt/scratch/ben_evans/numts/Trinity_Assembly_Simaonly_and_SimaDeni/Sima_and_SimaDeni_paired_reverse_cat.fasta
+```
+
 # Assemble reads
 
 I had to fix the reads like this (for single end)
