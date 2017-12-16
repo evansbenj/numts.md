@@ -148,7 +148,7 @@ sima only paired
 # Location of combined reads
 Contatenated merged_forward
 ```
-/mnt/scratch/ben_evans/numts/Trinity_Assembly_Simaonly_and_SimaDeni
+/mnt/scratch/ben_evans/numts/Trinity_Assembly_Simaonly_and_SimaDeni/Sima_and_SimaDeni_forwardmerged_cat.fasta
 ```
 Concatenated paired
 ```
