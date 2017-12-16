@@ -133,6 +133,18 @@ simadeni only paired
 /mnt/scratch/ben_evans/numts/Sima_Deni_cookiecutter/paired_reads_simadeninumts_forward.fasta
 /mnt/scratch/ben_evans/numts/Sima_Deni_cookiecutter/paired_reads_simadeninumts_reverse.fasta 
 ```
+
+# Location of Sima only plus other reads
+sima_only_forward
+```
+/mnt/scratch/ben_evans/numts/sima_only_mtDNA_in_neanders/Sima_only_cookiecutter/simaonly_all_forwardreads_cat.fasta
+```
+sima only paired
+```
+/mnt/scratch/ben_evans/numts/sima_only_mtDNA_in_neanders/Sima_only_cookiecutter/simaonlypaired_reads_allnumts_forward.fasta
+/mnt/scratch/ben_evans/numts/sima_only_mtDNA_in_neanders/Sima_only_cookiecutter/simaonlypaired_reads_allnumts_reverse.fasta
+```
+
 # Assemble reads
 
 I had to fix the reads like this (for single end)
