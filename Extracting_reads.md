@@ -85,14 +85,15 @@ foreach my $header (@headers){
 ```
 
 # Getting rid of extra stuff
+```
 awk 'NR%7==1 || NR%7==2 || NR%7==5 || NR%7==6' paired_reads_allnumts.out > new.file
-
+```
 # Replace @ with >
 
 ```
 sed -i -e 's/@/>/g' hello.txt
 ```
-# Make forward reads
+# Make forward reads from output of perl grep script above
 ```
 awk 'NR%4==1 || NR%4==2' paired_reads_simadeninumts.fasta > paired_reads_simadeninumts_forward.fasta
 ```
