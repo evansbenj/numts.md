@@ -121,6 +121,18 @@ sed -i -e 's/@/>/g' paired_reads_simadeninumts_reverse.fasta
 ```
 sed -i '/@/ s_$_/2_' paired_reads_simadeninumts_reverse.fasta
 ```
+
+# Location of SimaDeni reads
+
+simadeni only forward
+```
+/mnt/scratch/ben_evans/numts/Sima_Deni_cookiecutter/allS.fasta
+```
+simadeni only paired
+```
+/mnt/scratch/ben_evans/numts/Sima_Deni_cookiecutter/paired_reads_simadeninumts_forward.fasta
+/mnt/scratch/ben_evans/numts/Sima_Deni_cookiecutter/paired_reads_simadeninumts_reverse.fasta 
+```
 # Assemble reads
 
 I had to fix the reads like this (for single end)
