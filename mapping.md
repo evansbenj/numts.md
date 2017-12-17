@@ -12,8 +12,10 @@ samtools faidx Trinity.fasta
 
 # Mapping
 
+Disable seeding with `-i 10000`
+
 ```
-/mnt/expressions/ben_evans/bin/bwa/bwa mem Trinity.fasta ../allreads.fasta | /mnt/expressions/ben_evans/bin/samtools/samtools view -Shu - | /mnt/expressions/ben_evans/bin/samtools/samtools sort - -o Trinity_allreads_sorted.bam
+/mnt/expressions/ben_evans/bin/bwa/bwa mem Trinity.fasta ../allreads.fasta -i 10000 | /mnt/expressions/ben_evans/bin/samtools/samtools view -Shu - | /mnt/expressions/ben_evans/bin/samtools/samtools sort - -o Trinity_allreads_sorted.bam
 ```
 
 Index
