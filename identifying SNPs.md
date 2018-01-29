@@ -1,6 +1,6 @@
 # Identifying SNPs in mtDNA
 
-I wrote a script that identifies SNPs in an aligned fasta file (identifies_synapomorphies.pl).  It allows me to vary how many individuals are compared to others in an alignment. For starters I'm doing Sima plus 4 denis compared to humans and neanders.
+I wrote a script that identifies SNPs in an aligned fasta file (identifies_synapomorphies.pl).  It allows me to vary how many individuals in the doner mtDNA population are compared to others, which will be the host population, in the mtDNA alignment. For starters I'm doing Sima plus 4 denis compared to humans and neanders. 
 
 run like this:
 ```
