@@ -4,7 +4,7 @@ I wrote a script that identifies SNPs in an aligned fasta file (identifies_synap
 
 run like this:
 ```
-./identifies_synapomorphies.pl 4 29 mtDNA_align.fasta simamtDNA_to_Neander_genome.txt
+./identifies_synapomorphies_noNs.pl 1 29 mtDNA_align_Sima_doner_first_one.fasta sima_doner_to_altai_.txt
 ```
 ```
 #!/usr/bin/perl 
@@ -26,8 +26,8 @@ use List::MoreUtils qw/ uniq /;
 
 # This information will be used to grep dump files from jellyfish
 
-# example commandline:
-# ./identifies_synapomorphies.pl 4 29 mtDNA_align.fasta simamtDNA_to_Neander_genome.txt
+# example commandline for only one doner mtDNA only:
+# ./identifies_synapomorphies_Simaonly.pl 1 29 mtDNA_align.fasta simamtDNA_to_Neander_genome.txt
 
 my $ingroup = $ARGV[0]; # How many of the first n sequences to consider to have fixed differences
 my $kmer = $ARGV[1]; # kmer size
@@ -123,44 +123,66 @@ my $commandline;
 my $status;
 my $synapomorphy_base;
 my @bases=("A","C","T","G");
+my $doner_commandline;
+my %mutatant_commandline;
+my $mutant_counter=0;
+my $host_commandline;
+my $doner_window;
+my $host_window;
 
 foreach(@synapomorphies){
 	$sima_data=();
 	$newneander_data=();
-	print OUTFILE "Sima_deni kmer queries mtDNA position ".$_."\n";
+	#print OUTFILE "Simaonly kmer queries mtDNA position ".$_."\n";
 	# Make 57 bp query for jellyfish tiling script
 	for ($n=$_-$kmer+1; $n < $_+$kmer; $n++){
 		$sima_data=$sima_data.$datahash{$keyarray[0]}[$n];
 	}
-	print OUTFILE "$sima_data\n";	
-	$commandline="qsub -l h_vmem=64g -cwd -b y bash -c \"";
-	$commandline=$commandline."./jellyfish_query_kmers.pl ".$sima_data." 29 kmer-raw_S_neanderthal.jf query_".$_."Sima_deni\"";
+	#print OUTFILE "$sima_data\n";
+	$doner_window=$sima_data;
+	#$commandline="qsub -l h_vmem=64g -cwd -b y bash -c \"";
+	$commandline="./jellyfish_query_kmers.pl ".$sima_data." 29 kmer-raw_S_neanderthal.jf query_".$_."doner";
 	print $commandline,"\n";
+	$doner_commandline=$commandline;
 	#$status = system($commandline);
 
 	# Make three error 57 bp queries for jellyfish tiling script 
 	# These differ by only the syanaopmorphy base
 	$synapomorphy_base=substr $sima_data,($kmer-1),1;
+
 	foreach my $base (@bases){
 	    if ($synapomorphy_base ne $base){
-		substr($sima_data,($kmer-1),1) = $base;
-		$commandline="qsub -l h_vmem=64g -cwd -b y bash -c \"";
-		$commandline=$commandline."./jellyfish_query_kmers.pl ".$sima_data." 29 kmer-raw_S_neanderthal.jf query_".$_."error_".$base."\"";
-		print $commandline,"\n";
-		#$status = system($commandline);
+			substr($sima_data,($kmer-1),1) = $base;
+			#$commandline="qsub -l h_vmem=64g -cwd -b y bash -c \"";
+			$commandline="./jellyfish_query_kmers.pl ".$sima_data." 29 kmer-raw_S_neanderthal.jf query_".$_."error_".$base;
+			print $commandline,"\n";
+			$mutatant_commandline{$base}=$commandline;
+			#$status = system($commandline);
 	    }
 	}
 	
 	# compare to altai mtDNA
-	print OUTFILE "Altai mtDNA queries \n";
+	#print OUTFILE "Altai mtDNA queries \n";
 	for ($n=$_-$kmer+1; $n < $_+$kmer; $n++){
 		$newneander_data=$newneander_data.$datahash{$keyarray[21]}[$n];
 	}
-	print OUTFILE "$newneander_data\n\n";
-	$commandline="qsub -l h_vmem=64g -cwd -b y bash -c \"";
-	$commandline=$commandline."./jellyfish_query_kmers.pl ".$newneander_data." 29 kmer-raw_S_neanderthal.jf query_".$_."altai\"";
+	#print OUTFILE "$newneander_data\n\n";
+	$host_window=$newneander_data;
+	#$commandline="qsub -l h_vmem=64g -cwd -b y bash -c \"";
+	$commandline="./jellyfish_query_kmers.pl ".$newneander_data." 29 kmer-raw_S_neanderthal.jf query_".$_."host";
 	print $commandline,"\n";
+	$host_commandline=$commandline;
 	#$status = system($commandline);
+
+	# check if the doner or the host windows have Ns.  If not, print to outfile
+	if(($doner_window !~ /N/)&&($host_window !~ /N/)&&($doner_window !~ /-/)&&($host_window !~ /-/)){
+		print OUTFILE $doner_commandline,"\n";
+		foreach (keys %mutatant_commandline){
+			print OUTFILE $mutatant_commandline{$_},"\n";
+		}
+		print OUTFILE $host_commandline,"\n\n";
+	}
+	%mutatant_commandline=();
 }	
 
 
@@ -169,46 +191,6 @@ close OUTFILE;
 print "Closing output file: $outputfile\n";
 
 exit;
-```
 
-This script also executes another script that queries a jellyfish file and quantifies kmers.
-```
-#!/usr/bin/env perl
-use strict;
-use warnings;
-use lib qw(~/perl_modules);
-use List::MoreUtils qw/ uniq /;
-
-#  This program will issue grep commands for a given sequence
-#  against a kmer dump and save the dump of those kmers
-#  to a file for plotting. It will take as input the sequence
-#  which should span a SNP in the middle, the kmer size, and
-#  the output file name
-
-
-my $inputsequence = $ARGV[0];
-my $kmersize = $ARGV[1];
-my $inputile = $ARGV[2];
-my $outputfile = $ARGV[3];
-
-unless (open(OUTFILE, ">$outputfile"))  {
-	print "I can\'t write to $outputfile\n";
-	exit;
-}
-print "Creating output file: $outputfile\n";
-
-
-my $search;
-my $status;
-my $y;
-my $command;
-for ($y = 0 ; $y <= (length($inputsequence)-$kmersize) ; $y++ ) {
-	$search= substr $inputsequence, $y, $kmersize;
-	$command="qsub -l h_vmem=2g -cwd -b y bash -c \"";
-	$command =$command." jellyfish query ".$inputile." ".$search." >> ".$outputfile."\"";
-	print $command,"\n";
-#	my $command = shell_quote('grep', '--', $search, "$inputile >> $outputfile");
-	$status = system($command);
-}
 
 ```
