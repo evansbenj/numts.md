@@ -11,15 +11,25 @@ for example, for Lineage 4 in denis
 ```
 ../identifies_synapomorphies_noNs_and_revcomp.pl 10 29 mtDNA_align_10_Neanders_and_8_modhumas_doner_first.fasta recent_neander_doner_deni8_host
 ```
-for lineage 1 in denis
+for lineage 2 in denis
 ```
 ../identifies_synapomorphies_noNs_and_revcomp.pl 18 29 mtDNA_align_10_Neanders_and_8_modhumas_doner_first.fasta recent_neander_plus_modhumans_doner_deni8_host
 ```
 
-for lineage 1X in Altai
+for lineage 1 in Altai
 ```
 ../identifies_synapomorphies_noNs_and_revcomp.pl 4 29 mtDNA_align_SimaDeni_doner_first_four.fasta simadeni_doner_to_altai_host.txt
 ```
+for lineage 3(sima) in Altai
+```
+../identifies_synapomorphies_noNs_and_revcomp.pl 1 29 mtDNA_align_Sima_doner_first_one.fasta sima_doner_to_altai_host.txt
+```
+
+for lineage 3(sima) in vindija
+```
+../identifies_synapomorphies_noNs_and_revcomp.pl 1 29 mtDNA_align_Sima_doner_first_one.fasta sima_doner_to_vindija_host.txt
+```
+
 
 ```
 #!/usr/bin/perl 
