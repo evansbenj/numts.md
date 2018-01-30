@@ -6,6 +6,12 @@ run like this:
 ```
 ./identifies_synapomorphies_noNs.pl 1 29 mtDNA_align_Sima_doner_first_one.fasta sima_doner_to_altai_.txt
 ```
+
+for example
+```
+../identifies_synapomorphies_noNs_and_revcomp.pl 10 29 mtDNA_align_10_Neanders_and_8_modhumas_doner_first.fasta recent_neander_doner_deni8_host
+```
+
 ```
 #!/usr/bin/perl 
 use strict;
