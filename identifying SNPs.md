@@ -6,10 +6,19 @@ run like this:
 ```
 ./identifies_synapomorphies_noNs.pl 1 29 mtDNA_align_Sima_doner_first_one.fasta sima_doner_to_altai_.txt
 ```
-
+(After changing the database in the script to query the appropriate genome:
 for example, for Lineage 4 in denis
 ```
 ../identifies_synapomorphies_noNs_and_revcomp.pl 10 29 mtDNA_align_10_Neanders_and_8_modhumas_doner_first.fasta recent_neander_doner_deni8_host
+```
+for lineage 1 in denis
+```
+../identifies_synapomorphies_noNs_and_revcomp.pl 18 29 mtDNA_align_10_Neanders_and_8_modhumas_doner_first.fasta recent_neander_plus_modhumans_doner_deni8_host
+```
+
+for lineage 1X in Altai
+```
+../identifies_synapomorphies_noNs_and_revcomp.pl 4 29 mtDNA_align_SimaDeni_doner_first_four.fasta simadeni_doner_to_altai_host.txt
 ```
 
 ```
