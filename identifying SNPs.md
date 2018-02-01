@@ -228,4 +228,12 @@ more simadeni_doner_to_altai_host.txt | grep 'doner' | cut -d ' ' -f 2 | awk 'NR
 ```
 the awk command saves lines that have a remainder of 1.  This saves alternates starting with the first line.  Change to zero if you want alternatives starting with the second line.
 
+to get the first 29mer, use this:
+```
+more simadeni_doner_to_altai_host.txt | grep 'doner' | cut -d ' ' -f 2 | awk 'NR%2==1' | cut -c 1-29
+```
+to get the last 29mer, use this
+```
+more simadeni_doner_to_altai_host.txt | grep 'doner' | cut -d ' ' -f 2 | awk 'NR%2==1' | cut -c 29-57
+```
 
