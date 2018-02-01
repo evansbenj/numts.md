@@ -219,3 +219,13 @@ exit;
 
 
 ```
+
+# extracting windows from commandlines
+
+To get the 57 bp window from the forward doner, use this command:
+```
+more simadeni_doner_to_altai_host.txt | grep 'doner' | cut -d ' ' -f 2 | awk 'NR%2==1'
+```
+the awk command saves lines that have a remainder of 1.  This saves alternates starting with the first line.  Change to zero if you want alternatives starting with the second line.
+
+
