@@ -20,3 +20,5 @@ Sierra Leone	MSL_2	NUMT present
 Kenya	LWK_1	NO NUMT
 Kenya	LWK_2	NO NUMT
 ```
+
+relatively high frequency in several African populations suggests that this numt was not introgressed.
