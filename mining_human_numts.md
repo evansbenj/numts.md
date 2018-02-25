@@ -10,7 +10,7 @@ https://genome.ucsc.edu/cgi-bin/hgc?hgsid=655142535_al6bhueucilAmKILQTKacLJPxFQX
 
 # Weird numt
 
-Steffi made a 1000 genomes file for me to use to check out the weird numt.  I first examined homozy sites in Altai like this:
+Steffi made a 1000 genomes file for me to use to check out the weird numt at chr1:564464-570303.  I first examined homozy sites in Altai like this:
 
 ```
 java -Xmx4g -jar /mnt/expressions/ben_evans/bin/GenomeAnalysisTK-nightly-2017-10-07-g1994025/GenomeAnalysisTK.jar -T SelectVariants -R /mnt/solexa/Genomes/hg19_evan/whole_genome.fa -V chr1_530000-600000_mq25.vcf -select 'vc.getGenotype("AltaiNeandertal").isHomVar()' -o chr1_530000-600000_mq25_homoz_in_Altai.vcf
