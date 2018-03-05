@@ -23,6 +23,7 @@ awk -F" " '{for(i=1;i<=NF;i++){if ($i ~ /NA19017/){print i}}}' chr1_530000-60000
 
 Then you can extract the altai and human genotypes like this:
 ```
-awk '$10 == "1/1" {print $10,"\t",$1989}' chr1_530000-600000_mq25.vcf > temp
+awk '$10 == "AltaiNeandertal" {print $1,"\t",$2,"\t",$10,"\t",$1989"\t",$998"\t",$1177"\t",$1136}' chr1_530000-600000_mq25.vcf > temp
+awk ' $10 == "1/1" || $10 == "0/1" {print $1,"\t",$2,"\t",$10,"\t",$1989"\t",$998"\t",$1177"\t",$1136}' chr1_530000-600000_mq25.vcf >> temp
 ```
-This checks if the Altai genotype in the 10th column is homozy alt, and if it is, print this genotype and also the human genotype in column 1989, which is one of the Gambia genotypes. I'm going to do this for all 8 genotypes now.  
+This checks if the Altai genotype in the 10th column is homozy alt, and if it is, print this genotype and also the human genotype in the four columns for each human genome I looked at with kmers.  It also prints columns 1 and 2 which have the chr and bp.
