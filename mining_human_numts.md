@@ -15,3 +15,14 @@ Steffi made a 1000 genomes file for me to use to check out the weird numt at chr
 ```
 java -Xmx4g -jar /mnt/expressions/ben_evans/bin/GenomeAnalysisTK-nightly-2017-10-07-g1994025/GenomeAnalysisTK.jar -T SelectVariants -R /mnt/solexa/Genomes/hg19_evan/whole_genome.fa -V chr1_530000-600000_mq25.vcf -select 'vc.getGenotype("AltaiNeandertal").isHomVar()' -o chr1_530000-600000_mq25_homoz_in_Altai.vcf
 ```
+
+To get the column with the genotypes of a specific genome, use this:
+```
+awk -F" " '{for(i=1;i<=NF;i++){if ($i ~ /NA19017/){print i}}}' chr1_530000-600000_mq25.vcf
+```
+
+Then you can extract the altai and human genotypes like this:
+```
+awk '$10 == "1/1" {print $10,"\t",$1989}' chr1_530000-600000_mq25.vcf > temp
+```
+This checks if the Altai genotype in the 10th column is homozy alt, and if it is, print this genotype and also the human genotype in column 1989, which is one of the Gambia genotypes. I'm going to do this for all 8 genotypes now.  
